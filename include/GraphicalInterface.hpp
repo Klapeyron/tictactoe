@@ -11,7 +11,7 @@ using ImageWindow = std::string;
 
 const std::string DEFAULT_WINDOW_NAME = "TicTacToe";
 const std::string TEMPLATE_FILES_DIRECTORY = "imageTemplates/";
-const std::vector<std::string> templateFileNames {"empty.png", "x.png", "o.png"};
+const std::vector<std::string> templateFileNames {"empty.png", "o.png", "x.png"};
 
 class GraphicalInterface :public MouseClickSubject {
   std::vector<Image> templateSymbolImages;
