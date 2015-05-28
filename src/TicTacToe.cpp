@@ -41,8 +41,14 @@ void TicTacToe::Game(bool turn, int size){
   G.updateTable(Convert(),size);
 }
 
-void TicTacToe::update(const int x,const int y){
-  o.tab[x][y] = true;
+void TicTacToe::update(const int a,const int b){
+  if(o.tab[a][b] | x.tab[a][b])    //jeśli a,b już zajęte, 
+    G.updateTable(Convert(),size); // ponownie wykonaj updateTable
+  o.tab[a][b] = true;
+  if(o.Check())    //sprawdź czy o nie wygrał aby
+    G.showWinner(Symbol::Circle);
   MakeMove();
+  if(x.Check())     //sprawdź czy aby nie wygrał krzyzyk
+    G.showWinner(Symbol::Cross);
   G.updateTable(Convert(),size);
 }
