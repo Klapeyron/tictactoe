@@ -17,7 +17,7 @@ class GraphicalInterface :public MouseClickSubject {
 
  public:
   // TODO: Ustalić argument funkcji
-  void updateTable();
+  void updateTable(Symbol ** tablica, const int size);
 };
 
 #endif
