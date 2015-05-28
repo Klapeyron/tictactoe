@@ -13,11 +13,16 @@ const std::string DEFAULT_WINDOW_NAME = "TicTacToe";
 const std::string TEMPLATE_FILES_DIRECTORY = "imageTemplates/";
 const std::vector<std::string> templateFileNames {"empty.png", "o.png", "x.png"};
 
+
 class GraphicalInterface :public MouseClickSubject {
+ public:
   std::vector<Image> templateSymbolImages;
   Image windowImage;
   ImageWindow windowHandler;
   int gameSize;
+
+  static void MouseUsage(int event, int x, int y, int flags, void* userdata);
+  void ConvertMouseClick(const int x, const int y);
  public:
   GraphicalInterface(const int size = 3);
   void updateTable(Symbol ** tablica, const int size);
