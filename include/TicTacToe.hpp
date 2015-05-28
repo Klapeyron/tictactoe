@@ -14,16 +14,16 @@ class TicTacToe :public MouseClickObserver{
   int size;
   bool turn_X;  //true - tura gracza x, false - tura gracza o
   GraphicalInterface G;
-  void update(const int x,const int y);
+  void update(const int a,const int b);
   Symbol** Convert();
 public:
   void SetSize(int n=3);
   void MakeMove();
   void Game(bool turn=true, int size=3);
-  //int CheckWin();
-  TicTacToe(){
+  TicTacToe(const int siz=3) : G(siz) {
     turn_X = true;
-    size = 0;
+    size = siz;
+    //G.registerObserver(*this);  - to bedzie w mainie
   }
 };
 

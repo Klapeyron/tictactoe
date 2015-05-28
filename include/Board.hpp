@@ -5,7 +5,6 @@
 #include <cstdlib>
 
 class Board{ 
-
   bool CheckInd(int n);
   bool CheckDiagonal();
 public:
