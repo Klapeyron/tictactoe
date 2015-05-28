@@ -11,12 +11,11 @@ class MouseClickSubject {
   void registerObserver(MouseClickObserver& obserwator);
 };
 
-enum class Symbol : unsigned int {Circle, Cross, Empty};
+enum class Symbol : unsigned int {Empty, Circle, Cross};
 
 class GraphicalInterface :public MouseClickSubject {
 
  public:
-  // TODO: Ustalić argument funkcji
   void updateTable(Symbol ** tablica, const int size);
 };
 
