@@ -19,7 +19,7 @@ class GraphicalInterface :public MouseClickSubject {
   int gameSize;
  public:
   // TODO: Dopisac argument do windowImage()
-  GraphicalInterface(const int size) :gameSize(size), windowHandler("TicTacToe"), windowImage() {}
+  GraphicalInterface(const int size = 0) :gameSize(size), windowHandler("TicTacToe"), windowImage() {}
   void updateTable(Symbol ** tablica, const int size);
   void showWinner(Symbol gracz);
   void clearWindow();
