@@ -8,10 +8,11 @@ void GraphicalInterface::MouseUsage(int event, int x, int y, int flags, void* us
     myClass->ConvertMouseClick(x,y);
 }
 
-void GraphicalInterface::ConvertMouseClick(const int x,const int y) {
-  std::cout << "Zarejestrowalem nacisniecie myszki ("<<x<<" "<<y<<")" << std::endl;
-  // TODO: tutaj przetwarzam pozycje na indeksy tablicy
-  MouseClickSubject::notify(x,y);
+void GraphicalInterface::ConvertMouseClick(const int x,const int y) {  
+  auto convertedX = convertMousePossitionToTableField(x);
+  auto convertedY = convertMousePossitionToTableField(y);
+  MouseClickSubject::notify(convertedX,convertedY);
+  std::cout << "Współrzędne pola ("<< convertedX << " "<< convertedY << ")" << std::endl;
 }
 
 GraphicalInterface::GraphicalInterface(const int size) :GraphicalPreferencesHolder(size),
@@ -37,9 +38,6 @@ void GraphicalInterface::clearWindow() {}
 void GraphicalInterface::showWinner(Symbol) {}
 
 void GraphicalInterface::updateTable(Symbol** tablica, const int size) {
-  // TODO: Tymczasowa wartosc size do testow
-  windowImage = templateSymbolImages[size];
   cv::imshow( windowHandler, windowImage );
   cv::waitKey(0);
-  windowImage = windowImage+windowImage;
 }
