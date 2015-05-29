@@ -5,7 +5,7 @@
 
 class MouseClickObserver {
  public:
-  virtual void update(const int x,const int y) = 0;
+  virtual void updateMouseClick(const int x,const int y) = 0;
 };
 
 class MouseClickSubject {

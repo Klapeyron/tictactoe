@@ -14,12 +14,20 @@ void GraphicalInterface::ConvertMouseClick(const int x,const int y) {
   MouseClickSubject::notify(x,y);
 }
 
-// TODO: Dopisac argument do windowImage()
-GraphicalInterface::GraphicalInterface(const int size)
-    :gameSize(size), windowHandler(DEFAULT_WINDOW_NAME), windowImage(1000,1000,1) {
+GraphicalInterface::GraphicalInterface(const int size) :GraphicalPreferencesHolder(size),
+                                                        windowHandler(DEFAULT_WINDOW_NAME),
+                                                        windowImage(DEFAULT_WINDOW_SIZE,DEFAULT_WINDOW_SIZE,0) {
+  auto edge = GraphicalPreferencesHolder::singleTemplateSize();
+  cv::Size newImageSize {edge, edge};
 
-  for(auto const& fileName : templateFileNames)
-    templateSymbolImages.push_back( cv::imread(TEMPLATE_FILES_DIRECTORY+fileName,CV_LOAD_IMAGE_COLOR) );
+  for(auto const& fileName : templateFileNames) {
+    auto loadedImage = cv::imread(TEMPLATE_FILES_DIRECTORY+fileName,
+                                  CV_LOAD_IMAGE_ANYDEPTH | CV_LOAD_IMAGE_ANYCOLOR);
+    cv::Mat newImage;
+    cv::resize(loadedImage,newImage, newImageSize,0,0,cv::INTER_CUBIC);
+    templateSymbolImages.push_back(newImage);
+  }
+  
   cv::namedWindow( windowHandler, CV_WINDOW_AUTOSIZE );
   cv::setMouseCallback(windowHandler, MouseUsage, this);
 }
@@ -34,4 +42,12 @@ void GraphicalInterface::updateTable(Symbol** tablica, const int size) {
   cv::imshow( windowHandler, windowImage );
   cv::waitKey(0);
   windowImage = windowImage+windowImage;
+}
+
+int GraphicalPreferencesHolder::singleTemplateSize() const {
+  return _singleTemplateSize;
+}
+
+int GraphicalPreferencesHolder::convertMousePossitionToTableField(const int value) const {
+  return value/singleTemplateSize();
 }
