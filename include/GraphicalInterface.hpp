@@ -4,6 +4,7 @@
 #include <vector>
 #include <opencv/cv.hpp>
 #include "MouseClickObserver.hpp"
+#include "GraphicalPreferencesHoler.hpp"
 #include "Symbol.hpp"
 
 using Image = cv::Mat;
@@ -12,18 +13,6 @@ using ImageWindow = std::string;
 const std::string DEFAULT_WINDOW_NAME = "TicTacToe";
 const std::string TEMPLATE_FILES_DIRECTORY = "imageTemplates/";
 const std::vector<std::string> templateFileNames {"empty.png", "o.png", "x.png"};
-
-const int DEFAULT_WINDOW_SIZE = 1000;
-
-class GraphicalPreferencesHolder {
-  const int gameSize;
-  const int _singleTemplateSize;
- public:
-  GraphicalPreferencesHolder(const int size) :gameSize(size), _singleTemplateSize(DEFAULT_WINDOW_SIZE/size) {}
-  int singleTemplateSize() const;
-  int convertMousePossitionToTableField(const int value) const;
-};
-
 
 class GraphicalInterface :public MouseClickSubject, GraphicalPreferencesHolder {
   

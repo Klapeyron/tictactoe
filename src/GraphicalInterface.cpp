@@ -19,7 +19,7 @@ GraphicalInterface::GraphicalInterface(const int size) :GraphicalPreferencesHold
                                                         windowImage(DEFAULT_WINDOW_SIZE,DEFAULT_WINDOW_SIZE,0) {
   auto edge = GraphicalPreferencesHolder::singleTemplateSize();
   cv::Size newImageSize {edge, edge};
-
+  
   for(auto const& fileName : templateFileNames) {
     auto loadedImage = cv::imread(TEMPLATE_FILES_DIRECTORY+fileName,
                                   CV_LOAD_IMAGE_ANYDEPTH | CV_LOAD_IMAGE_ANYCOLOR);
@@ -42,12 +42,4 @@ void GraphicalInterface::updateTable(Symbol** tablica, const int size) {
   cv::imshow( windowHandler, windowImage );
   cv::waitKey(0);
   windowImage = windowImage+windowImage;
-}
-
-int GraphicalPreferencesHolder::singleTemplateSize() const {
-  return _singleTemplateSize;
-}
-
-int GraphicalPreferencesHolder::convertMousePossitionToTableField(const int value) const {
-  return value/singleTemplateSize();
 }
