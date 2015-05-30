@@ -14,7 +14,7 @@ class TicTacToe :public MouseClickObserver{
   int size;
   bool turn_X;  //true - tura gracza x, false - tura gracza o
   GraphicalInterface G;
-  void update(const int a,const int b);
+  void updateMouseClick(const int a,const int b);
   Symbol** Convert();
 public:
   void SetSize(int n=3);

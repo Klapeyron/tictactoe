@@ -47,3 +47,20 @@ bool Board::Check(){
   }
   return CheckDiagonal();
 }
+
+Board::Board(const Board & Ob){
+  tab = NULL;
+  size = 0;
+  NewBoard(Ob.size);
+  for(int i=0;i<Ob.size;++i)
+    for(int j=0;j<Ob.size;++j)
+      tab[i][j]=Ob.tab[i][j];
+}
+
+Board & Board::operator = (const Board & Ob){
+  NewBoard(Ob.size);
+  for(int i=0;i<Ob.size;++i)
+    for(int j=0;j<Ob.size;++j)
+      tab[i][j]=Ob.tab[i][j];
+  return *this;
+}

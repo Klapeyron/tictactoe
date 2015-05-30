@@ -41,8 +41,8 @@ void TicTacToe::Game(bool turn, int size){
   G.updateTable(Convert(),size);
 }
 
-void TicTacToe::update(const int a,const int b){
-  if(o.tab[a][b] | x.tab[a][b])    //jeśli a,b już zajęte, 
+void TicTacToe::updateMouseClick(const int a,const int b){
+  if(o.tab[a][b] || x.tab[a][b])    //jeśli a,b już zajęte, 
     G.updateTable(Convert(),size); // ponownie wykonaj updateTable
   o.tab[a][b] = true;
   if(o.Check())    //sprawdź czy o nie wygrał aby
