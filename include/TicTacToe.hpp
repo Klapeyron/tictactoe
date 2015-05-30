@@ -8,21 +8,21 @@
 #include <cstdlib>  
 #include <ctime> 
 
-
 class TicTacToe :public MouseClickObserver{
   Board x,o;
   int size;
-  bool turn_X;  //true - tura gracza x, false - tura gracza o
+  int counter;  // zlicza ktora to z kolei tura
   GraphicalInterface G;
   void updateMouseClick(const int a,const int b);
   Symbol** Convert();
+  int minmax(Board a, Board b, bool tura, int size, int cnt);
 public:
   void SetSize(int n=3);
-  void MakeMove();
-  void Game(bool turn=true, int size=3);
+  void MakeMove(int size, int cnt);
+  void Game(bool turn=true);
   TicTacToe(const int siz=3) : G(siz) {
-    turn_X = true;
     size = siz;
+    counter = 0;
     //G.registerObserver(*this);  - to bedzie w mainie
   }
 };
