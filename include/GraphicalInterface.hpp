@@ -22,6 +22,7 @@ class GraphicalInterface :public MouseClickSubject, GraphicalPreferencesHolder {
   
   static void MouseUsage(int event, int x, int y, int flags, void* userdata);
   void ConvertMouseClick(const int x, const int y);
+  cv::Rect getROI(const int x, const int y);
  public:
   GraphicalInterface(const int size = 3);
   void updateTable(Symbol ** tablica, const int size);
