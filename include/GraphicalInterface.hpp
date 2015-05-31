@@ -8,17 +8,22 @@
 #include "Symbol.hpp"
 
 using Image = cv::Mat;
-using ImageWindow = std::string;
+using WindowName = std::string;
 
 const std::string DEFAULT_WINDOW_NAME = "TicTacToe";
+const std::string DEFAULT_WINNER_WINDOW_NAME = "Winner";
+
 const std::string TEMPLATE_FILES_DIRECTORY = "imageTemplates/";
 const std::vector<std::string> templateFileNames {"empty.png", "o.png", "x.png"};
+const std::vector<std::string> templateWinnerFileNames {"emptyWin.png", "circleWin.png", "crossWin.png"};
 
 class GraphicalInterface :public MouseClickSubject, GraphicalPreferencesHolder {
   
   std::vector<Image> templateSymbolImages;
+  std::vector<Image> templateWinnerImages;
   Image windowImage;
-  ImageWindow windowHandler;
+  Image winnerImage;
+  WindowName windowHandler;
   
   static void MouseUsage(int event, int x, int y, int flags, void* userdata);
   void ConvertMouseClick(const int x, const int y);
