@@ -29,7 +29,7 @@ class GraphicalInterface :public MouseClickSubject, GraphicalPreferencesHolder {
   void ConvertMouseClick(const int x, const int y);
   cv::Rect getROI(const int x, const int y);
  public:
-  GraphicalInterface(const int size = 3);
+  GraphicalInterface(const int size);
   void updateTable(Symbol ** tablica, const int size);
   void showWinner(Symbol gracz);
   void clearWindow();

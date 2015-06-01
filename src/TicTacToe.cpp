@@ -111,6 +111,7 @@ void TicTacToe::Game(bool turn){
     counter++;
   }
   G.updateTable(Convert(),size);
+
 }
 
 void TicTacToe::updateMouseClick(const int a,const int b){
@@ -119,20 +120,32 @@ void TicTacToe::updateMouseClick(const int a,const int b){
   o.tab[a][b] = true;
   counter++;
   if(o.Check()){    //sprawdź czy o nie wygrał aby
+    SetSize(3);
+    counter = 0;
+
     G.showWinner(Symbol::Circle);
     return;
   }
   if(counter == size*size){  //sprawdz czy nie ma remisu
+    SetSize(3);
+    counter = 0;
+
     G.showWinner(Symbol::Empty);
     return;
   }
   MakeMove(size,counter);
   counter++;
   if(x.Check()){     //sprawdź czy aby nie wygrał krzyzyk
+    SetSize(3);
+    counter = 0;
+
     G.showWinner(Symbol::Cross);
     return;
   }
   if(counter == size*size){  //sprawdz czy nie ma remisu
+    SetSize(3);
+    counter = 0;
+
     G.showWinner(Symbol::Empty);
     return;
   }
