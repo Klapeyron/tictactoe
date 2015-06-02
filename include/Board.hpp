@@ -18,6 +18,7 @@ public:
     tab = NULL;
     size = 0;
   }
+  ~Board();
 };
 
 

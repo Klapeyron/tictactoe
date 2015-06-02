@@ -64,3 +64,9 @@ Board & Board::operator = (const Board & Ob){
       tab[i][j]=Ob.tab[i][j];
   return *this;
 }
+
+Board::~Board(){
+  for(int i=0;i<size;++i)
+    delete [] tab[i];
+  delete [] tab;
+}
