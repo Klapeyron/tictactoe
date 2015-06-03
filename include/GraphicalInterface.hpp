@@ -31,6 +31,7 @@ class GraphicalInterface :public MouseClickSubject, GraphicalPreferencesHolder {
  public:
   GraphicalInterface(const int size);
   void updateTable(Symbol ** tablica, const int size);
+  void updateTableW(Symbol ** tablica, const int size);
   void showWinner(Symbol gracz);
   void clearWindow();
 };
