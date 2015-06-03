@@ -29,9 +29,7 @@ GraphicalInterface::GraphicalInterface(const int size) :GraphicalPreferencesHold
   }
 
   for(auto const& fileName : templateWinnerFileNames) {
-    auto loadedImage = cv::imread(TEMPLATE_FILES_DIRECTORY+fileName,CV_8U);
-    cv::Mat newImage;
-    cv::resize(loadedImage,newImage, newImageSize,0,0,cv::INTER_CUBIC);
+    auto newImage = cv::imread(TEMPLATE_FILES_DIRECTORY+fileName,CV_8U);  
     templateWinnerImages.push_back(newImage);
   }
   winnerImage = templateWinnerImages[0];
