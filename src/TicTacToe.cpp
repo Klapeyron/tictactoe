@@ -119,6 +119,7 @@ void TicTacToe::updateMouseClick(const int a,const int b){
     G.updateTable(Convert(),size); // ponownie wykonaj updateTable
   o.tab[a][b] = true;
   counter++;
+  G.updateTableW(Convert(),size);
   if(o.Check()){    //sprawdź czy o nie wygrał aby
     SetSize(size);
     counter = 0;
@@ -133,6 +134,7 @@ void TicTacToe::updateMouseClick(const int a,const int b){
   }
   MakeMove(size,counter);
   counter++;
+  G.updateTableW(Convert(),size);
   if(x.Check()){     //sprawdź czy aby nie wygrał krzyzyk
     SetSize(size);
     counter = 0;

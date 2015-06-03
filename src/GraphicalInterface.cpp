@@ -83,3 +83,16 @@ void GraphicalInterface::updateTable(Symbol** tablica, const int size) {
   cv::imshow( windowHandler, windowImage );
   cv::waitKey(0);
 }
+
+void GraphicalInterface::updateTableW(Symbol** tablica, const int size) { 
+  for(int i=0; i<size; i++)
+    for(int j=0; j<size; j++)
+    {
+      auto roi = getROI(i,j);
+      auto symbol = static_cast<int> (tablica[i][j]);
+      templateSymbolImages[symbol].copyTo(windowImage(roi)); 
+    }
+  cv::imshow( windowHandler, windowImage );
+  // cv::waitKey(0);
+}
+
