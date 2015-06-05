@@ -41,16 +41,20 @@ GraphicalInterface::GraphicalInterface(const int size) :GraphicalPreferencesHold
 
 void GraphicalInterface::clearWindow() {
   const auto size = GraphicalPreferencesHolder::gameSize();
-  Symbol** tablica = new Symbol*[size];
+  Symbol** table = new Symbol*[size];
   
   for(int i = 0; i < size; ++i)
-    tablica[i] = new Symbol[size];
+    table[i] = new Symbol[size];
   
   for(int i =0; i<size; ++i)
     for(int j=0; j<size; ++j)
-      tablica[i][j] = Symbol::Empty;
-  updateTable(tablica,size);
-  // TODO: dodac wyswietlanie siatki
+      table[i][j] = Symbol::Empty;
+  
+  updateTable(table,size);
+
+  for (int i = 0; i<size; ++i)
+    delete [] table[i];
+  delete [] table;
 }
 
 void GraphicalInterface::showWinner(Symbol gracz) {
@@ -70,12 +74,12 @@ cv::Rect GraphicalInterface::getROI(const int x, const int y) {
   return roi;
 }
 
-void GraphicalInterface::updateTable(Symbol** tablica, const int size) { 
+void GraphicalInterface::updateTable(Symbol** table, const int size) { 
   for(int i=0; i<size; i++)
     for(int j=0; j<size; j++)
     {
       auto roi = getROI(i,j);
-      auto symbol = static_cast<int> (tablica[i][j]);
+      auto symbol = static_cast<int> (table[i][j]);
       templateSymbolImages[symbol].copyTo(windowImage(roi)); 
     }
   cv::imshow( windowHandler, windowImage );
@@ -83,12 +87,12 @@ void GraphicalInterface::updateTable(Symbol** tablica, const int size) {
 }
 
 
-void GraphicalInterface::updateTableW(Symbol** tablica, const int size) { 
+void GraphicalInterface::updateTableW(Symbol** table, const int size) { 
   for(int i=0; i<size; i++)
     for(int j=0; j<size; j++)
     {
       auto roi = getROI(i,j);
-      auto symbol = static_cast<int> (tablica[i][j]);
+      auto symbol = static_cast<int> (table[i][j]);
       templateSymbolImages[symbol].copyTo(windowImage(roi)); 
     }
   cv::imshow( windowHandler, windowImage );
