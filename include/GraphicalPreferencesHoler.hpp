@@ -1,7 +1,8 @@
-#ifndef GRAPHICAL_PREFERENCE_HOLDER_HPP_
-#define GRAPHICAL_PREFERENCE_HOLDER_HPP_
+#pragma once
 
+namespace {
 const int DEFAULT_WINDOW_SIZE = 1000;
+}
 
 class GraphicalPreferencesHolder {
   const int _gameSize;
@@ -12,5 +13,3 @@ class GraphicalPreferencesHolder {
   int gameSize() const;
   int convertMousePossitionToTableField(const int value) const;
 };
-
-#endif /* GRAPHICAL_PREFERENCE_HOLDER_HPP_ */

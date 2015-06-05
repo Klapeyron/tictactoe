@@ -1,6 +1,4 @@
-#ifndef MOUSE_CLICK_OBSERVER_HPP_
-#define MOUSE_CLICK_OBSERVER_HPP_
-
+#pragma once
 #include <vector>
 
 class MouseClickObserver {
@@ -14,5 +12,3 @@ class MouseClickSubject {
   void notify(const int x, const int y);
   void registerObserver(MouseClickObserver& obserwator);
 };
-
-#endif /* MOUSE_CLICK_OBSERVER_HPP_ */

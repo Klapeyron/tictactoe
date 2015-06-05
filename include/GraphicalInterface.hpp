@@ -1,5 +1,4 @@
-#ifndef GRAPHICAL_INTERFACE_HPP_
-#define GRAPHICAL_INTERFACE_HPP_
+#pragma once
 
 #include <vector>
 #include <opencv/cv.hpp>
@@ -7,6 +6,7 @@
 #include "GraphicalPreferencesHoler.hpp"
 #include "Symbol.hpp"
 
+namespace {
 using Image = cv::Mat;
 using WindowName = std::string;
 
@@ -16,6 +16,7 @@ const std::string DEFAULT_WINNER_WINDOW_NAME = "Winner";
 const std::string TEMPLATE_FILES_DIRECTORY = "imageTemplates/";
 const std::vector<std::string> templateFileNames {"empty.png", "o.png", "x.png"};
 const std::vector<std::string> templateWinnerFileNames {"emptyWin.png", "circleWin.png", "crossWin.png"};
+}
 
 class GraphicalInterface :public MouseClickSubject, GraphicalPreferencesHolder {
   
@@ -35,5 +36,3 @@ class GraphicalInterface :public MouseClickSubject, GraphicalPreferencesHolder {
   void showWinner(Symbol gracz);
   void clearWindow();
 };
-
-#endif /* GRAPHICAL_INTERFACE_HPP_ */

@@ -35,7 +35,6 @@ GraphicalInterface::GraphicalInterface(const int size) :GraphicalPreferencesHold
   winnerImage = templateWinnerImages[0];
   
   cv::namedWindow( windowHandler, CV_WINDOW_AUTOSIZE );
-  // TODO: przeniesc obsluge myszy do osobnej klasy;
   cv::setMouseCallback(windowHandler, MouseUsage, this);
 }
 
