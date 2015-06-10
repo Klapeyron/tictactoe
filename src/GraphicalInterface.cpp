@@ -1,7 +1,5 @@
 #include "GraphicalInterface.hpp"
 
-#include <iostream>
-
 void GraphicalInterface::MouseUsage(int event, int x, int y, int flags, void* userdata) {
   auto myClass = reinterpret_cast< GraphicalInterface* > (userdata);
   if  ( event == cv::EVENT_LBUTTONDOWN ) 
@@ -15,8 +13,8 @@ void GraphicalInterface::ConvertMouseClick(const int x,const int y) {
 }
 
 GraphicalInterface::GraphicalInterface(const int size) :GraphicalPreferencesHolder(size),
-                                                        windowHandler(DEFAULT_WINDOW_NAME),
-                                                        windowImage(DEFAULT_WINDOW_SIZE,DEFAULT_WINDOW_SIZE,CV_8U)
+                                                        windowImage(DEFAULT_WINDOW_SIZE,DEFAULT_WINDOW_SIZE,CV_8U),
+                                                        windowHandler(DEFAULT_WINDOW_NAME)    
 {
   auto edge = GraphicalPreferencesHolder::singleTemplateSize();
   cv::Size newImageSize {edge, edge};
