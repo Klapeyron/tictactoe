@@ -11,7 +11,7 @@ int TicTacToe::minmax(Board a, Board b, bool turn, int size, int cnt){
   int actions = s-counter;
   int depth = cnt-counter;
   if(actions > 9 && depth > 2){
-    if(actions > 68)
+    if(actions > 60)
       return 0;
     if(actions > 24 && depth > 3)
       return 0;

@@ -17,10 +17,6 @@ void Board::NewBoard(int n){
 }
 
 bool Board::CheckInd(int n){
-  if(n >= size){
-    cerr<<"CheckInd: nieprawidłowy indeks!\n";
-    exit(1);
-  }
   bool h=true,v=true;
   for(int i=0;i<size;++i){
     h &= tab[i][n];
